@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const { createHmac } = await import('node:crypto');
+import { v4 as uuidv4 } from 'uuid';
+
 
 const { Schema } = mongoose;
 
@@ -21,10 +24,9 @@ const userSchema = new Schema({
     required: true,
     unique:true
   },
-  //TODO: come back here
-  password: {
+  encry_password: {
     type:String,
-    trim:true,
+    required: true,
   },
   salt: String,
   role: {
@@ -36,5 +38,36 @@ const userSchema = new Schema({
     default:[]
   }
 });
+
+userSchema.virtual("password")
+    .set(function(password){
+      this._password = password;
+      this.salt = uuidv4();
+      this.encry_password = securePassword(password);
+    })
+    .get(function(){
+      return this._password
+    })
+
+userSchema.method = {
+
+  authenticate: function(plainpassword){
+    return this.securePassword(plainpassword) === this.encry_password;
+  },
+
+  securePassword : function(plainpassword){
+    if(!plainpassword) return "";
+    try{
+      return createHmac('sha256', this.salt)
+      .update(plainpassword)
+      .digest('hex');
+      
+    }catch(err){
+      return "";
+    }
+
+  }
+
+}
 
 module.exports = mongoose.model("User",userSchema);
