@@ -21,7 +21,7 @@ const productSchema = new Schema({
         maxlength: 32,
         trim: true
     },
-    category: { // It is called as Mongoose ObjectId schema. It is used in situation we need to associate one schema to another schema as shown below
+    category: { // It is called as Mongoose ObjectId schema. It is used in situation we need to associate one schema to another schema as shown below 
         type: ObjectId,
         ref: "Category",
         required: true
