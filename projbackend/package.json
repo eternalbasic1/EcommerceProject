@@ -1,0 +1,23 @@
+{
+  "name": "projbackend",
+  "version": "1.0.0",
+  "description": "Developing a Backend for Ecommerce Store",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eternalbasic1/EcommerceProject.git"
+  },
+  "author": "VineethReddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eternalbasic1/EcommerceProject/issues"
+  },
+  "homepage": "https://github.com/eternalbasic1/EcommerceProject#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}
