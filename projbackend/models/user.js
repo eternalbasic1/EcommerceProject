@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
-const { createHmac } = await import('node:crypto');
-import { v4 as uuidv4 } from 'uuid';
+// const crypto = require('node:crypto');
+// const createHmac = crypto.createHmac;
+const { createHmac } = require('node:crypto');// Instead of above too we can write this way in ES6
+//const { createHmac } = await import('node:crypto'); // SyntaxError: await is only valid in async functions and the top level bodies of modules
+//import { v4 as uuidv4 } from 'uuid'; // SyntaxError: Cannot use import statement outside a module
+const { v4: uuidv4 } = require('uuid');
 
 
 const { Schema } = mongoose;
@@ -16,6 +20,10 @@ const userSchema = new Schema({
   lastname: {
     type : String,
     maxlength: 32,
+    trim: true
+  },
+  userinfo:{
+    type: String,
     trim: true
   },
   email: {
@@ -44,7 +52,7 @@ userSchema.virtual("password")
     .set(function(password){
       this._password = password;
       this.salt = uuidv4();
-      this.encry_password = securePassword(password);
+      this.encry_password = this.securePassword(password); //If we directly use securePassword instead of this.securePassword then it's throwing a error as Reference error such as ReferenceError: securePassword is not defined 
     })
     .get(function(){
       return this._password
@@ -69,6 +77,6 @@ userSchema.methods = {
 
   }
 
-}
+};
 
 module.exports = mongoose.model("User",userSchema);
