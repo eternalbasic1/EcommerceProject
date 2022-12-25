@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const { check , validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
+const {expressjwt} = require('express-jwt');
 
 exports.signin = (req,res) => {
     const {email,password} = req.body;
@@ -61,7 +62,19 @@ exports.signup = (req,res) => {
 
 
 exports.signout = (req,res) => {
+    res.clearCookie("token");
     res.json({
-        message: "User Signout"
+        message: "User Signout Successfull"
     });
 }
+
+
+// protected routes
+exports.isSignedIn = expressjwt({
+        secret: "HalloMotto",
+        algorithms: ['HS256'],
+        userProperty: "auth"
+    });
+
+
+//custom middleware
