@@ -7,8 +7,9 @@ const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const cors = require("cors");
 
-
+//My Routes
 const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
 
 //DB Connection
 mongoose.set('strictQuery', false);//not very much useful as of now
@@ -29,7 +30,8 @@ app.use(cors());  // Cross-Origin Resource Sharing (CORS) is a security feature 
 
 
 // My Routes
-app.use("/api", authRoutes)
+app.use("/api", authRoutes);
+app.use("/api",userRoutes);
 
 
 
