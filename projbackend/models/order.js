@@ -23,7 +23,7 @@ const OrderSchema = new Schema({
     address: String,
     updated: Date,
     user: {
-        type: mongoose.isObjectIdOrHexString,
+        type: ObjectId,
         ref: "User",
     }
 }, {timestamps: true}
