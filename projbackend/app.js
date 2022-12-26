@@ -11,6 +11,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
+const productRoutes = require("./routes/product");
 
 //DB Connection
 mongoose.set('strictQuery', false);//not very much useful as of now
@@ -34,6 +35,7 @@ app.use(cors());  // Cross-Origin Resource Sharing (CORS) is a security feature 
 app.use("/api", authRoutes);
 app.use("/api",userRoutes);
 app.use("/api",categoryRoutes);
+app.use("/api",productRoutes);
 
 
 
