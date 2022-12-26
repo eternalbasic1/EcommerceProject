@@ -28,28 +28,50 @@ exports.createProduct = (req,res) => {
                 error: "Problem with Image"
             });
         }
+        //destructure the fields
+        const {name , description, price, category, stock} = fields;  
+        
+        if(
+           !name ||
+           !description || 
+           !price ||
+           !category || 
+           !stock
+        ){
+            return res.status(400).json({
+                error: "Please Include all feilds"
+            })
+        }
 
-        //TODO: restrictions on feild
-        let product = new Product(fields)
+        let product = new Product(fields);
 
         //handle file here
         if(file.photo){
             if(file.photo.size > 3000000){
                 return res.status(400).json({
-                    error: "File size is too big"
+                    error: "File size is too big!"
                 });
             }
-            product.photo.data = fs.readFileSync(file.photo.path)
-            product.photo.contentType = file.photo.type
+            if(product.photo){
+            product.photo.data = fs.readFileSync(file.photo.filepath);
+            product.photo.contentType = file.photo.mimetype;
         }
-        product.save((err,product => {
+        // if(!product.photo){
+        //     console.log("No product.photo");
+        // }
+    }
+
+        //console.log(product);
+
+
+        product.save((err,product) => {
             if(err){
                 return res.status(400).json({
                     error: "Saving tshirt in DB failed"
                 });
             }
             res.json(product);
-        }));
+        });
     });
 
-}
+};
