@@ -117,7 +117,7 @@ exports.updateProduct = (req,res) => {
         
         //Updation Code
         let product = req.product;
-        product = _.extend(product,fields)
+        product = _.extend(product,fields) // We will be using lodash here 
 
         //handle file here
         if(file.photo){
