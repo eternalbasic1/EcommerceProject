@@ -7,7 +7,7 @@ const { createHmac } = require('node:crypto');// Instead of above too we can wri
 const { v4: uuidv4 } = require('uuid');
 
 
-const { Schema } = mongoose;
+const { Schema } = mongoose; // elegant mongodb object modeling for node.js
 
 
 const userSchema = new Schema({
@@ -36,7 +36,7 @@ const userSchema = new Schema({
     type:String,
     required: true,
   },
-  salt: String,
+  salt: String, // Generates a random number which furthur helps in encrypting password
   role: {
     type: Number,
     default:0,
@@ -51,7 +51,7 @@ const userSchema = new Schema({
 userSchema.virtual("password")
     .set(function(password){
       this._password = password;
-      this.salt = uuidv4();
+      this.salt = uuidv4();     //Simple and faster way of generating RFC4122 UUIDs(Simply it generates a longer string for hashing password etc..)
       this.encry_password = this.securePassword(password); //If we directly use securePassword instead of this.securePassword then it's throwing a error as Reference error such as ReferenceError: securePassword is not defined 
     })
     .get(function(){
