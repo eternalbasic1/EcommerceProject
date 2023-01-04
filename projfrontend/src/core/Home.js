@@ -1,10 +1,14 @@
 import React from 'react'
 import "../styles.css"
+import {API} from "../backend";
 
 export default function Home() {
+  
+  console.log("API IS", API);
+
   return (
-    <div>
-        <h1 className='text-white'>Hello Front End</h1>    
+    <div>  
+        <h1 className='text-white'>Hello Front End { API}</h1>    
     </div>
-  )
+  ); 
 }
