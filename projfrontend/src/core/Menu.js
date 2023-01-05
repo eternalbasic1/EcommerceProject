@@ -1,14 +1,5 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-//import {withRouter} from "react-dom"; // This is not working check this check video 14.01
-
-// const currentTab = (history, path) => {
-//     if(history.location.pathname === path){
-//         return {color: "#2ecc72"};
-//     }else{
-//         return {color: "#FFFFFF"};
-//     }
-// }
 
 const Menu = () => (
     <div>
