@@ -8,7 +8,7 @@ export default function Home() {
  console.log("API IS", API);
 
   return (
-    <Base title='Welcome to TShit Company' description='Buy 1 Get 1 FREE'>  
+    <Base title='Welcome to TShirt Store' description='Get a FLAT 33% Discount today'>  
         <div className="row">
           <div className="col-4">
             <button className="btn btn-success">TEST</button>
