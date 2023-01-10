@@ -4,12 +4,11 @@ import { signin,authenticate, isAuthenticated } from '../auth/helper';
 import Base from './Base';
 
 
-
 const Signin = () => {
   
   const [values,setValues] = useState({
-    email:"",
-    password:"",
+    email:"b@service.com",
+    password:"12345",
     error:"",
     loading:false,
     didRedirect:false
@@ -39,7 +38,7 @@ const Signin = () => {
         })
       }
     })
-    .catch( console.log("signin request Failed") );
+    .catch( error? console.log(`Error in Signin ${error}`):console.log("User Successfully signedin"));
   }
 
   const performRedirect = () => {
@@ -48,7 +47,7 @@ const Signin = () => {
         return <p>redirect to admin</p>
       }else{
         return <Routes><Route path="/" element={ <Navigate to = "/"/> } /></Routes>
-            
+      
         //return <>{redirect("http://localhost:3000/")}</> // <p>redirect to userdashboard</p>
       }
      }
@@ -103,7 +102,7 @@ const Signin = () => {
   };
 
   return (
-    <Base  title='SignUp' description='Sign-up today and get a FLAT 33% Discount'>
+    <Base  title='SignIn' description='Sign-up today and get a FLAT 33% Discount'>
       {loadingMessage()}
       {errorMessage()}
       {signInForm()}
