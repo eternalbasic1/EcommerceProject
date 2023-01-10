@@ -8,8 +8,19 @@ import { Navigate } from "react-router-dom";
             <Navigate to="/" replace/>
         )
     }
-    return children
+    return children;
    
  }
 
- export default PrivateRoutes;
+ const PrivateRoutesUser = ({isAuthenticated,children}) => {
+    if(!isAuthenticated()){
+        return (
+            <Navigate to="/" replace/>
+        )
+
+    }
+    return children;
+ }
+
+
+ export {PrivateRoutes,PrivateRoutesUser};

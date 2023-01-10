@@ -22,11 +22,11 @@ const Menu = () => (
                 className='nav-link' to='/cart'>Cart</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink 
+                { (isAuthenticated().user) && (<NavLink 
                 style={({isActive})=>({
                     color: isActive? "#2ecc72" :"#FFFFFF",
                 })}
-                className='nav-link' to='/user/dashboard'>Dashboard</NavLink>
+                className='nav-link' to='/user/dashboard'>Dashboard</NavLink>)}
             </li>
             <li className="nav-item">
                 { (isAuthenticated().user && isAuthenticated().user.role === 1) && (<NavLink 
