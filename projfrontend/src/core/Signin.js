@@ -44,7 +44,9 @@ const Signin = () => {
   const performRedirect = () => {
     if(didRedirect){
       if(user && user.role === 1){
-        return <p>redirect to admin</p>
+        
+        return <Routes><Route path="/" element={ <Navigate to = "/"/> } /></Routes>
+        // return <p>redirect to admin</p>
       }else{
         return <Routes><Route path="/" element={ <Navigate to = "/"/> } /></Routes>
       

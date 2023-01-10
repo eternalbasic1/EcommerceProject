@@ -29,11 +29,11 @@ const Menu = () => (
                 className='nav-link' to='/user/dashboard'>Dashboard</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink 
+                { (isAuthenticated().user && isAuthenticated().user.role === 1) && (<NavLink 
                 style={({isActive})=>({
                     color: isActive? "#2ecc72" :"#FFFFFF",
                 })}
-                className='nav-link' to='/admin/dashboard'>A. Dashboard</NavLink>
+                className='nav-link' to='/admin/dashboard'>A. Dashboard</NavLink>)}
             </li>
             <li className="nav-item">
             {!isAuthenticated() &&(
