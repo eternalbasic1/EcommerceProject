@@ -12,31 +12,59 @@ const AdminDashBoard = () => {
         <h4 className="card-header bg-dark text-white text-center">Admin Navigation</h4>
         <ul className="list-group">
           <li className="list-group-item">
-            <NavLink style={({isActive}) => {
+            <NavLink 
+            to="/admin/create/category"
+            style={({isActive}) => {
                 return {
                   backgroundColor: isActive? "orange": "",
                  
                 }
               }}
-            className='nav-link text-dark  text-center border border-dark rounded m-3' to="/">Create Categories</NavLink>
-            <NavLink style={({isActive}) => {
+            className='nav-link text-dark  text-center border border-dark rounded m-3'
+            >
+              Create Categories
+            </NavLink>
+            <NavLink 
+            to="/admin/categories"
+            style={({isActive}) => {
+                return {
+                  backgroundColor: isActive? "orange": "",
+                 
+                }
+              }}
+            className='nav-link text-dark  text-center border border-dark rounded m-3'
+            >
+              Manage Categories
+            </NavLink>
+            <NavLink 
+            style={({isActive}) => {
                 return {
                   backgroundColor: isActive? "orange": ""
                 }
               }}
-            className='nav-link text-dark text-center border border-dark rounded m-3' to="/">Create Products</NavLink>
-            <NavLink style={({isActive}) => {
+            className='nav-link text-dark text-center border border-dark rounded m-3' 
+            to="/admin/create/product">
+              Create Products
+              </NavLink>
+            <NavLink 
+            style={({isActive}) => {
                 return {
                   backgroundColor: isActive? "orange": ""
                 }
               }}
-            className='nav-link text-dark text-center border border-dark rounded m-3' to="/">Manage Products</NavLink>
-            <NavLink style={({isActive}) => {
+            className='nav-link text-dark text-center border border-dark rounded m-3' 
+            to="/">Manage Products
+            </NavLink>
+            <NavLink 
+            style={({isActive}) => {
                 return {
                   backgroundColor: isActive? "orange": ""
                 }
               }}
-            className='nav-link text-dark text-center border border-dark rounded m-3' to="/">Manage Order</NavLink>
+            className='nav-link text-dark text-center border border-dark rounded m-3' 
+            to="/">
+              Manage Order
+            </NavLink>
           </li>
         </ul>
       </div>
