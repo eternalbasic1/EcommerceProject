@@ -1,3 +1,4 @@
+import { json } from "react-router-dom";
 import { API } from "../../backend";
 
 
@@ -77,12 +78,17 @@ export const deleteProduct = (productId,userId,token,product) => {
 
 //get a product
 export const getProduct = productId => {
+    //console.log('admin Api', productId)
+    //const productIDasstring = (productId);
+    //console.log("Stringify product Id", productIDasstring);
     return fetch(`${API}/product/${productId}`,{
         method:"GET"
     }).then(response => {
+        console.log(response);
         return response.json();
     }).catch(err => {
-        console.log(err);
+        //console.error('The ERRRRORR is ',err)
+        console.log('The ERRRRORR is IS',err);
     });
 };
 
