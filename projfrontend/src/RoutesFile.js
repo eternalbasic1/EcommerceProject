@@ -2,6 +2,8 @@ import {Route, createBrowserRouter, createRoutesFromElements, Navigate} from "re
 import AddCategory from "./admin/AddCategory"
 import AddProduct from "./admin/AddProduct"
 import ManageCategories from "./admin/ManageCategories"
+import ManageProducts from "./admin/ManageProducts"
+import UpdateProduct from "./admin/UpdateProduct"
 import { isAuthenticated } from "./auth/helper"
 import AdminRoutes from "./auth/helper/AdminRoutes"
 import {PrivateRoutes,PrivateRoutesUser} from "./auth/helper/PrivateRoutes"
@@ -54,6 +56,17 @@ const RoutesFile  =
               <AddProduct/>
             </AdminRoutes>} 
             />
+            <Route path="/admin/products" element={
+            <AdminRoutes isAuthenticated={isAuthenticated}>
+              <ManageProducts/>
+            </AdminRoutes>} 
+            />
+            <Route path="/admin/product/update/:productId" element={
+            <AdminRoutes isAuthenticated={isAuthenticated}>
+              <UpdateProduct/>
+            </AdminRoutes>} 
+            />
+            
 
             
             <Route path = "/user/dashboard" element={

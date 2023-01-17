@@ -53,7 +53,8 @@ const AdminDashBoard = () => {
                 }
               }}
             className='nav-link text-dark text-center border border-dark rounded m-3' 
-            to="/">Manage Products
+            to="/admin/products">
+              Manage Products
             </NavLink>
             <NavLink 
             style={({isActive}) => {
