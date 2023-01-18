@@ -3,6 +3,7 @@ import AddCategory from "./admin/AddCategory"
 import AddProduct from "./admin/AddProduct"
 import ManageCategories from "./admin/ManageCategories"
 import ManageProducts from "./admin/ManageProducts"
+import UpdateCategory from "./admin/UpdateCategory"
 import UpdateProduct from "./admin/UpdateProduct"
 import { isAuthenticated } from "./auth/helper"
 import AdminRoutes from "./auth/helper/AdminRoutes"
@@ -49,6 +50,11 @@ const RoutesFile  =
             <Route path="/admin/categories" element={
             <AdminRoutes isAuthenticated={isAuthenticated}>
               <ManageCategories/>
+            </AdminRoutes>} 
+            />
+            <Route path="/admin/category/update/:categoryId" element={
+            <AdminRoutes isAuthenticated={isAuthenticated}>
+              <UpdateCategory/>
             </AdminRoutes>} 
             />
             <Route path="/admin/create/product" element={

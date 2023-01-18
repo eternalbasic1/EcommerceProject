@@ -36,6 +36,7 @@ const UpdateProduct = (props) => {
       if(data.error){
         setValues({...values,error:data.error});
       }else{
+        preloadCategories();
         setValues({
           ...values,
           name:data.name,
@@ -45,7 +46,6 @@ const UpdateProduct = (props) => {
           stock:data.stock,
           formData: new FormData(),
         });
-        preloadCategories();
       }
     });
   };
