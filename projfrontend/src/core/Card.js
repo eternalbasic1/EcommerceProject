@@ -4,6 +4,10 @@ import ImageHelper from './helper/ImageHelper';
 
 const Card = ({product,addtoCart = true,removeFromCart = false}) => {
     
+    const cardTitle = product ? product.name : "A photo of pexels"
+    const cardDescription = product ? product.description : "Default description"
+    const cardPrice = product ? product.price : "Default"
+
     const showAddToCart = (addtoCart) => {
         return (
             addtoCart && (
@@ -29,15 +33,15 @@ const Card = ({product,addtoCart = true,removeFromCart = false}) => {
     } 
 
     return (
-        <div className="card text-white bg-dark border border-info ">
-        <div className="card-header lead text-center">A Photo from pexels</div>
-        <div className="card-body ">
+        <div className="card text-white bg-dark border border-info">
+        <div className="card-header lead text-center fw-bold text-secondary ">{cardTitle}</div>
+        <div className="card-body border-3">
             <ImageHelper product={product}/>
-          <p className="lead bg-success font-weight-normal text-wrap text-center">
-            this photo looks great
+          <p className="lead bg-success font-weight-normal text-wrap text-center mt-1">
+            {cardDescription}
           </p>
           <div className='text-center'>
-          <p className="btn btn-success rounded btn-sm px-4">$ 5</p>
+          <p className="btn btn-success rounded btn-sm px-4">$ {cardPrice}</p>
           </div>
           <div className="row">
             <div className="d-grid col-12 ">
