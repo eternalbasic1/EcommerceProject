@@ -8,6 +8,7 @@ import UpdateProduct from "./admin/UpdateProduct"
 import { isAuthenticated } from "./auth/helper"
 import AdminRoutes from "./auth/helper/AdminRoutes"
 import {PrivateRoutes,PrivateRoutesUser} from "./auth/helper/PrivateRoutes"
+import Cart from "./core/Cart"
 //import Admindash from "./core/Admindash"
 import Home from './core/Home'
 import Signin from './core/Signin'
@@ -20,6 +21,8 @@ const RoutesFile  =
       createRoutesFromElements(
         <>
             <Route path="/" element={ <Home/> } />
+            <Route path="/cart" element={ <Cart/> } />
+
             <Route path="/signin" element={
             
             // PrivateRoutes
