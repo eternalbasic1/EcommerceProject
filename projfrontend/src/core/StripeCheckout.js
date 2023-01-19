@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { isAuthenticated } from '../auth/helper'
 import { cartEmpty, loadCart } from './helper/cardHelper'
 import StripeCheckoutButton from 'react-stripe-checkout'
+import { API } from '../backend'
+import {createOrder} from "./helper/orderHelper"
 
 const StripeCheckout = ({
     products, 
@@ -34,14 +36,30 @@ const StripeCheckout = ({
         return amount;
     }
 
-    const makePayment = () => {
-        //
-    }
+    const makePayment = token => {
+        const body = { 
+            token,
+            products
+        }
+
+        const headers = {
+            "Content-type": "application/json"
+        }
+        return fetch(`${API}/stripepayment`,{
+            method: 'POST',
+            headers,
+            body:JSON.stringify(body)
+        }).then(response => 
+            console.log("THE RESPONSEE is",response)
+            //call further methods
+            ).catch(err => console.log(err))
+    };
 
     const showStripeButton = () => {
+        console.log(getFinalAmount());
         return isAuthenticated() ? (
             <StripeCheckoutButton
-            stripeKey=''
+            stripeKey='pk_test_51MRsFTSE2ExuA5Jf4zsUUmzQBP5oLv9t0f7upgdpt5uWBMBnKZHMMoGsIL87O6f4nwnxpxwzkh4nG2e1Zqfyw5fj0057FbSnzX'
             token={makePayment}
             amount={getFinalAmount() * 100}
             name="Buy TShirts"
@@ -55,7 +73,7 @@ const StripeCheckout = ({
                 <button className="btn btn-warning">Signin</button>
             </Link>
         )
-    }
+    };
 
     return (
     <div className='text-center'>

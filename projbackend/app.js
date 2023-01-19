@@ -13,6 +13,8 @@ const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/order");
+const stripeRoutes = require("./routes/stripepayment");
+
 
 //DB Connection
 mongoose.set('strictQuery', false);//not very much useful as of now
@@ -38,6 +40,7 @@ app.use("/api",userRoutes);
 app.use("/api",categoryRoutes);
 app.use("/api",productRoutes);
 app.use("/api",orderRoutes);
+app.use("/api",stripeRoutes);
 
 
 
