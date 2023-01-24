@@ -35,7 +35,10 @@ exports.makepayment = (req,res) => {
             }
         }
     }, {idempotencyKey})
-    .then( result => res.status(200).json(result))
+    .then( result => {
+        console.log("THe STripe Payment stripe.customers.create result is ",result);
+        res.status(200).json(result);
+    })
     .catch(err => console.log(err));
    })
 

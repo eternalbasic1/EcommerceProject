@@ -19,7 +19,7 @@ const StripeCheckout = ({
         address: ""
     });
 
-    const token = isAuthenticated() && isAuthenticated().token;
+    const tokenASILI = isAuthenticated() && isAuthenticated().token;
     const userId = isAuthenticated() && isAuthenticated().user._id;
 
     // const getFinalPrice = () => {
@@ -37,6 +37,7 @@ const StripeCheckout = ({
     }
 
     const makePayment = token => {
+        console.log(token)
         const body = { 
             token,
             products
@@ -49,10 +50,21 @@ const StripeCheckout = ({
             method: 'POST',
             headers,
             body:JSON.stringify(body)
-        }).then(response => 
-            console.log("THE RESPONSEE is",response)
+        }).then(response =>{ 
+            console.log("THE RESPONSEE is",response);
             //call further methods
-            ).catch(err => console.log(err))
+            const orderData = {
+                products : products,
+                transaction_id: {id :"idviuvi168379"},
+                amount: 97,
+            }
+            console.log("initialing to save the order");
+            createOrder(userId,tokenASILI,orderData);
+            cartEmpty(() => {
+                console.log("Did we got a crash");
+            });
+            setReload(!reload)
+            }).catch(err => console.log(err))
     };
 
     const showStripeButton = () => {
@@ -68,7 +80,7 @@ const StripeCheckout = ({
             >
                 <button className='btn btn-success'>Pay with Stripe</button>
             </StripeCheckoutButton>
-        ): (
+        )  : (
             <Link to={"/signin"}>
                 <button className="btn btn-warning">Signin</button>
             </Link>
@@ -84,3 +96,9 @@ const StripeCheckout = ({
 }
 
 export default StripeCheckout;
+
+
+
+// cartEmpty(() => {
+//     console.log("Did we got a crash");
+// }) && setReload(!reload)
