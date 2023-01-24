@@ -5,6 +5,7 @@ import { cartEmpty, loadCart } from './helper/cardHelper'
 import StripeCheckoutButton from 'react-stripe-checkout'
 import { API } from '../backend'
 import {createOrder} from "./helper/orderHelper"
+const { v4: uuidv4 } = require('uuid');
 
 const StripeCheckout = ({
     products, 
@@ -37,7 +38,7 @@ const StripeCheckout = ({
     }
 
     const makePayment = token => {
-        console.log(token)
+        console.log("NOT THE TOKENASILI",token)
         const body = { 
             token,
             products
@@ -55,8 +56,8 @@ const StripeCheckout = ({
             //call further methods
             const orderData = {
                 products : products,
-                transaction_id: {id :"idviuvi168379"},
-                amount: 97,
+                transaction_id: token.card.id,
+                amount: getFinalAmount(),
             }
             console.log("initialing to save the order");
             createOrder(userId,tokenASILI,orderData);
