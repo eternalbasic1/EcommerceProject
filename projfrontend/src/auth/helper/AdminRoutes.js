@@ -3,9 +3,9 @@ import { Navigate } from "react-router-dom";
 
  const AdminRoutes = ({isAuthenticated, children}) => {
     const {user} = isAuthenticated();
-    console.log(user);
+    // console.log(user);
     if(!user || user.role !== 1){
-        console.log("Going in admin ");
+        // console.log("Going in admin ");
         return(
             <Navigate to="/" replace/>
         )

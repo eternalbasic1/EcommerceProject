@@ -58,7 +58,7 @@ export const getCategory = categoryId => {
         return response.json();
     }).catch(err => {
         //console.error('The ERRRRORR is ',err)
-        console.log('The ERRRRORR is IS',err);
+        console.log('The getCategory error IS',err);
     });
 };
 
@@ -69,8 +69,8 @@ export const getCategory = categoryId => {
 // /admin/category/update/categoryId
 
 export const updateCategory = (categoryId,userId,token,category) =>  {
-    console.log(category);
-    console.log(JSON.stringify(category));
+    // console.log(category);
+    // console.log(JSON.stringify(category));
     //console.log(categoryId,userId,category);
     //${API}/category/63a92b600e8c45601567e76f/63a56006c68d9fbab2ba902c
     //${API}/category/${categoryId}/${userId}
@@ -147,7 +147,7 @@ export const getProduct = productId => {
         return response.json();
     }).catch(err => {
         //console.error('The ERRRRORR is ',err)
-        console.log('The ERRRRORR is IS',err);
+        console.log('The getProduct error IS',err);
     });
 };
 

@@ -32,7 +32,7 @@ const UpdateProduct = (props) => {
     //TODO: there is a bug over here
     //console.log('Next checkpoint',productId)
     getProduct(productId).then(data => {
-      console.log('The Data is',data);
+      // console.log('The Data is',data);
       if(data.error){
         setValues({...values,error:data.error});
       }else{

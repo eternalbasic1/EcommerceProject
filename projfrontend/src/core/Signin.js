@@ -26,7 +26,7 @@ const Signin = () => {
     setValues({...values, error:false, loading:true})
     signin({email,password})
     .then(data => {
-      console.log(data);
+      // console.log(data);
       if(data.error){
         setValues({...values,error:data.error,loading:false})
       }else{

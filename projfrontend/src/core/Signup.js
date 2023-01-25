@@ -32,7 +32,7 @@ const Signup = () => {
       // }
       if(data.errors || data.err){
         const errorValue = data.errors || data.err
-        console.log( "Error working in signup form" );
+        //console.log( "Error working in signup form" );
         setValues({...values, error: errorValue, success:false})
       }else{
         setValues({

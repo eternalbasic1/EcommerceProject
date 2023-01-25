@@ -38,7 +38,7 @@ const StripeCheckout = ({
     }
 
     const makePayment = token => {
-        console.log("NOT THE TOKENASILI",token)
+        // console.log("NOT THE TOKENASILI",token)
         const body = { 
             token,
             products
@@ -52,24 +52,24 @@ const StripeCheckout = ({
             headers,
             body:JSON.stringify(body)
         }).then(response =>{ 
-            console.log("THE RESPONSEE is",response);
+            //console.log("THE RESPONSEE is",response);
             //call further methods
             const orderData = {
                 products : products,
                 transaction_id: token.card.id,
                 amount: getFinalAmount(),
             }
-            console.log("initialing to save the order");
+            //console.log("initialing to save the order");
             createOrder(userId,tokenASILI,orderData);
             cartEmpty(() => {
-                console.log("Did we got a crash");
+                console.log("Emptying Cart");
             });
             setReload(!reload)
             }).catch(err => console.log(err))
     };
 
     const showStripeButton = () => {
-        console.log(getFinalAmount());
+        // console.log(getFinalAmount());
         return isAuthenticated() ? (
             <StripeCheckoutButton
             stripeKey='pk_test_51MRsFTSE2ExuA5JfVA2yAVAQqnSgeC3H2mAcrWmhOhPScpdEvCSlq3RSbt4TZuSJDIQOarbLOc4XJ64GmBvJr9Sn00zm0Id4NY'
