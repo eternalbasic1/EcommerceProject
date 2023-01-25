@@ -1,4 +1,4 @@
-const stripe = require("stripe")("sk_test_51MRsFTSE2ExuA5JftZegLAvFn0QT0AK9oZNq7dz8COTjpUmQX8GEFCHH16P2J6Uoe9ensmwqIe222RGfexMEJSEw00bM7mc8th")
+const stripe = require("stripe")(process.env.STRIPE_SBACKEND)
 // const { result } = require("lodash");
 const { v4: uuidv4 } = require('uuid');
 
