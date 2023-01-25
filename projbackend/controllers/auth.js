@@ -19,7 +19,7 @@ exports.signin = (req,res) => {
         }
         if(!user.authenticate(password)){
             return res.status(401).json({
-                error: "Email and password is not correct"
+                error: "Email and password do not match"
             })
         }
 
@@ -71,16 +71,18 @@ exports.signout = (req,res) => {
 
 // protected routes
 exports.isSignedIn = expressjwt({
-        secret: "HalloMotto",
+        secret: process.env.SECRET,
         algorithms: ['HS256'],
         userProperty: "auth"
-    });
+    }); // It automatically checks the token generated was a logged in user or not 
 
 
 //custom middleware
 
 exports.isAuthenticated = (req,res,next) => {
-    let checker = req.profile && req.auth && req.profile._id == req.auth._id;
+    // console.log("Backend,controllers,auth,isAuthenticated");
+    // console.log(req);
+    let checker = req.profile && req.auth && req.profile._id == req.auth._id; // req.profile is being setup by frontend and req.auth is being setup by the top middleware(isSignedIn) and we are checking profile id === auth id;
     if(!checker){
         return res.status(403).json({
             error: "ACCESS DENIED"
