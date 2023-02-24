@@ -44,6 +44,21 @@ app.use("/api",orderRoutes);
 app.use("/api",stripeRoutes);
 // app.use("/api",paymentBRoutes);
 
+// TODO: If you wanted to do something in production with cors policy do it in below format and remove from Line 35(app.use(cors())) to line 45
+// var corsOptions = {
+//     origin: 'http://localhost:3000',
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+//   }
+
+// // My Routes // Prefixing every route using /api for good practice , in future if you want to edit  route names you can direct come here and edit it which will be reflected to all routes
+// app.use("/api",cors(corsOptions), authRoutes);
+// app.use("/api",cors(corsOptions), userRoutes);
+// app.use("/api",cors(corsOptions), categoryRoutes);
+// app.use("/api",cors(corsOptions), productRoutes);
+// app.use("/api",cors(corsOptions), orderRoutes);
+// app.use("/api",cors(corsOptions), stripeRoutes);
+// // app.use("/api",paymentBRoutes);
+
 
 
 //PORT
